@@ -21,7 +21,7 @@ public class OrcamentoController {
     @Autowired
     private final ListaOrcamentos_UC listaOrcamentosUc;
 
-    @GetMapping("/get/{dataCriacao}")
+    @PostMapping("/get/{dataCriacao}")
     public ResponseEntity<List<OrcamentoResponseDTO>> getOrcamentPorData(@PathVariable LocalDate dataCriacao) {
         log.info("Recebendo requisição para listar orçamentos por data - {}.", dataCriacao);
         return ResponseEntity.ok(listaOrcamentosUc.getListaOrcamentos(dataCriacao));

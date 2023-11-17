@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"  # Alterado para mapear a porta 8081 do host para a porta 8081 do contêiner
+    depends_on:
+      - postgres
+    networks:
+      - minha_rede_comum
+      - postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - "5436:5432"  # Mapeia a porta 5435 do host para a porta padrão do PostgreSQL (5432) no contêiner
+    environment:
+      POSTGRES_DB: ms2        # Define o nome do banco de dados
+      POSTGRES_USER: postgres   # Define o usuário
+      POSTGRES_PASSWORD: 123    # Define a senha
+    networks:
+      - postgres
+
+networks:
+  minha_rede_comum:
+    external: true
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:

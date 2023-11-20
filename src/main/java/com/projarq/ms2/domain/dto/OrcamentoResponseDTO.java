@@ -34,8 +34,8 @@ public class OrcamentoResponseDTO {
     public static OrcamentoResponseDTO toDTO(Orcamento orcamento) {
         return OrcamentoResponseDTO.builder()
                 .id(orcamento.getId())
-                .origem(orcamento.getCepOrigem())
-                .destino(orcamento.getCepDestino())
+                .origem(orcamento.getOrigem().getNumero())
+                .destino(orcamento.getDestino().getNumero())
                 .peso(orcamento.getPeso())
                 .custoBase(orcamento.getCustoBase())
                 .custoAdicional(orcamento.getCustoAdicional())

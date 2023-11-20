@@ -19,8 +19,13 @@ public class Orcamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cepOrigem;
-    private String cepDestino;
+    @ManyToOne
+    @JoinColumn(name = "id_origem")
+    private CEP origem;
+
+    @ManyToOne
+    @JoinColumn(name = "id_destino")
+    private CEP destino;
 
     private Double peso;
     private BigDecimal custoBase;
